@@ -15,6 +15,9 @@ const Board = () => {
   const [tickets, setTickets] = useState<TicketData[]>([]);
   const [error, setError] = useState(false);
   const [loginCheck, setLoginCheck] = useState(false);
+  const [filteredTickets, setFilteredTickets] = useState<TicketData[]>([]);
+  const [selectedUser, setSelectedUser] = useState<string>('');
+  const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
 
   const checkLogin = () => {
     if(auth.loggedIn()) {
@@ -42,6 +45,43 @@ const Board = () => {
     }
   }
 
+  const uniqueUsers = (): string[] => {
+    const username: string[] = tickets.map((ticket) => 
+    ticket.assignedUser?.username).filter((username): username is string =>
+    Boolean(username));
+    const uniqueUsers = [...new Set(username)];
+    return uniqueUsers;
+  };
+
+  const handleUserFilter = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedUser = e.target.value;
+    setSelectedUser(selectedUser);
+    if (selectedUser) {
+      const filteredTickets = tickets.filter((ticket) =>
+      ticket.assignedUser && ticket.assignedUser.username === selectedUser);
+      setFilteredTickets(filteredTickets);
+    } else {
+      setFilteredTickets(tickets);
+    }
+  };
+
+  const sortTicketsByUser = (ticketsToSort: TicketData[]): TicketData[] => {
+    return ticketsToSort.sort((a, b) => {
+      const userA = a.assignedUser?.username || '';
+      const userB = b.assignedUser?.username || '';
+      if (sortDirection === 'asc') {
+        return userA.localeCompare(userB);
+      } else {
+        return userB.localeCompare(userA);
+      }
+    });
+  };
+
+  const handleSortOrderChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newSortDirection = e.target.value as 'asc' | 'desc';
+    setSortDirection(newSortDirection);
+  };
+
   useLayoutEffect(() => {
     checkLogin();
   }, []);
@@ -67,17 +107,40 @@ const Board = () => {
         </div>  
       ) : (
           <div className='board'>
+            <Link to='/create' >
             <button type='button' id='create-ticket-link'>
-              <Link to='/create' >New Ticket</Link>
+              New Ticket
             </button>
+            </Link>
+            <div>
+              <label className='filter-label' htmlFor='userFilter'>
+              Assigned to:
+              </label>
+              <select id='userfilter' value={selectedUser} onChange={handleUserFilter}>
+                <option value=''>All Users</option>
+                {uniqueUsers().map((username) => (
+                  <option key={username} value={username}>
+                    {username}
+                  </option>
+                ))}
+              </select>
+              <label className='sort-label' htmlFor='sortOrder'>
+                {}
+              </label>
+              <select id='sortOrder' value={sortDirection} onChange={handleSortOrderChange} disabled={selectedUser !== ''}>
+                <option value='asc'>Ascending</option>
+                <option value='desc'>Descending</option>
+              </select>
+            </div>
             <div className='board-display'>
               {boardStates.map((status) => {
-                const filteredTickets = tickets.filter(ticket => ticket.status === status);
+                const filtered = filteredTickets.filter(ticket => ticket.status === status);
+                const sortedTickets = sortTicketsByUser(filtered);
                 return (
                   <Swimlane 
                     title={status} 
                     key={status} 
-                    tickets={filteredTickets} 
+                    tickets={sortedTickets} 
                     deleteTicket={deleteIndvTicket}
                   />
                 );

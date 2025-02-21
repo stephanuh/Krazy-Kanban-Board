@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { TicketData } from '../interfaces/TicketData';
 import { ApiMessage } from '../interfaces/ApiMessage';
 import { MouseEventHandler } from 'react';
+
+import auth from '../utils/auth';
 
 interface TicketCardProps {
   ticket: TicketData;
@@ -10,15 +12,20 @@ interface TicketCardProps {
 }
 
 const TicketCard = ({ ticket, deleteTicket }: TicketCardProps) => {
+  const navigate = useNavigate();
 
   const handleDelete: MouseEventHandler<HTMLButtonElement> = async (event) => {
-    const ticketId = Number(event.currentTarget.value);
-    if (!isNaN(ticketId)) {
+    if (!auth.loggedIn()) {
+      navigate('/login');
+      return;
+    }
+
+    const idTicket = Number(event.currentTarget.value);
+    if (!isNaN(idTicket)) {
       try {
-        const data = await deleteTicket(ticketId);
-        return data;
-      } catch (error) {
-        console.error('Failed to delete ticket:', error);
+        await deleteTicket(idTicket);
+      } catch (err) {
+        console.error('Failed to delete ticket', err);
       }
     }
   };

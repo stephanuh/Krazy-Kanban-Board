@@ -1,11 +1,14 @@
-import { useState, useEffect, FormEvent, ChangeEvent } from 'react';
+import { useState, useEffect, FormEvent, ChangeEvent, useLayoutEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { retrieveTicket, updateTicket } from '../api/ticketAPI';
 import { TicketData } from '../interfaces/TicketData';
 
+import auth from '../utils/auth';
+
 const EditTicket = () => {
   const [ticket, setTicket] = useState<TicketData | undefined>();
+  const  [loginCheck, setLoginCheck ] = useState(false);
 
   const navigate = useNavigate();
   const { state } = useLocation();
@@ -18,10 +21,20 @@ const EditTicket = () => {
       console.error('Failed to retrieve ticket:', err);
     }
   }
+//useLayoutEffect?
+useLayoutEffect(() => {
+  if (!auth.loggedIn()){
+    navigate('/login');
+  } else {
+    setLoginCheck(true);
+  }
+},[navigate]);
 
   useEffect(() => {
+    if (loginCheck){
     fetchTicket(state);
-  }, []);
+    }
+  }, [loginCheck, state]);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
