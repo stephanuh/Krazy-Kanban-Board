@@ -1,9 +1,11 @@
-import { useState, useEffect, FormEvent, ChangeEvent } from 'react';
+import { useState, useEffect, FormEvent, ChangeEvent, useLayoutEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createTicket } from '../api/ticketAPI';
 import { TicketData } from '../interfaces/TicketData';
 import { UserData } from '../interfaces/UserData';
 import { retrieveUsers } from '../api/userAPI';
+
+import auth from '../utils/auth';
 
 const CreateTicket = () => {
   const [newTicket, setNewTicket] = useState<TicketData | undefined>(
@@ -16,6 +18,8 @@ const CreateTicket = () => {
       assignedUser: null
     }
   );
+
+  const [loginCheck, setLoginCheck] = useState(false);
 
   const navigate = useNavigate();
 
@@ -30,9 +34,23 @@ const CreateTicket = () => {
     }
   };
 
+  const handleLoggedOut = (): void => {
+    if (!auth.loggedIn()) {
+      navigate('/login');
+    } else {
+      setLoginCheck(true);
+    }
+  };
+
+  useLayoutEffect(() => {
+    handleLoggedOut();
+  },[navigate]);
+
   useEffect(() => {
+    if (loginCheck){
     getAllUsers();
-  }, []);
+    }
+  }, [loginCheck]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -111,7 +129,7 @@ const CreateTicket = () => {
             )
           }
           </select>
-          <button type='submit' onSubmit={handleSubmit}>Submit Form</button>
+          <button type='submit' onSubmit={handleSubmit}>Save Form</button>
         </form>
       </div>
     </>
