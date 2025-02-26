@@ -7,9 +7,9 @@ interface JwtPayload {
 
 // TODO: verify the token exists and add the user data to the request object
 export const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
-  const authorizationHeader = req.headers['authorization'];
-  if (authorizationHeader) {
-    const token = authorizationHeader.split(' ')[1];
+  const authHeader = req.headers.authorization;
+  if (authHeader) {
+    const token = authHeader.split(' ')[1];
     const secretKey = process.env.JWT_SECREY_KEY || '';
 
     jwt.verify(token, secretKey, (err, user) => {

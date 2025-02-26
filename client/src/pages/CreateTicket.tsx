@@ -15,7 +15,7 @@ const CreateTicket = () => {
       description: '',
       status: 'Todo',
       assignedUserId: 1,
-      assignedUser: null
+      assignedUser: null,
     }
   );
 
@@ -113,13 +113,14 @@ const CreateTicket = () => {
             value={newTicket?.assignedUserId || ''}
             onChange={handleUserChange}
           >
-            {users ? users.map((user) => {
+            {users ? (users.map((user) => {
               return (
                 <option key={user.id} value={String(user.id)}>
                   {user.username}
                 </option>
-              )
-            }) : (
+              );
+            })
+           ) : (
             <textarea 
               id='tUserId'
               name='assignedUserId'
