@@ -21,6 +21,7 @@ const EditTicket = () => {
       console.error('Failed to retrieve ticket:', err);
     }
   }
+
 //useLayoutEffect?
 useLayoutEffect(() => {
   if (!auth.loggedIn()){

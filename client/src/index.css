@@ -10,6 +10,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --primary-color: #493c2d; /*change color later */
+  --secondary-color: #cedea8;/*change color later */
+  --dark-color:#775c48;/*change color later */
+  --light-color:#eae2d9;/*change color later */
+  --accent-color: #00a6ed;/*change color later */
+  --hover-color: #ff9505;/*change color later */
 }
 
 /* webkit solution */
@@ -28,18 +34,18 @@ a {
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--hover-color);
 }
 
 body {
-  background: #ECF0F1;
+  background: var(--primary-color);
   background-size: cover;
   background-repeat: no-repeat no-repeat;
   background-position: center center;
   margin: 0;
-  place-items: center;
+  place-items: center stretch; /*stretch was added */
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 130vh; /*was 100 */
 }
 
 h1 {
@@ -59,7 +65,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--hover-color);
 }
 button:focus,
 button:focus-visible {
@@ -105,7 +111,7 @@ tbody tr:nth-child(odd) {
 }
 
 .nav-title a {
-  color: #b864c4;
+  color: var(--accent-color);
 }
 
 .nav-item {
@@ -117,6 +123,7 @@ tbody tr:nth-child(odd) {
 .nav-link {
   color: #fff;
   text-decoration: none;
+  color: var(--accent-color);
 }
 
 .active {
@@ -139,23 +146,25 @@ tbody tr:nth-child(odd) {
 .swim-lane {
   text-align: center;
   font-weight: 500;
-  width: 33%;
+  flex:1 1 33%; /*lanes*/
+  /* width: 33%; */
   height: 90vh; 
   border: 1px solid rgba(0, 0, 0, 0.2);
   margin: 5px;
   padding: 5px;
+  overflow-y: auto; /*stops ticket overflows*/
 }
 
 .todo {
-  background-color: #e9cbec;
+  background-color: var(--light-color);
 }
 
 .inprogress {
-  background-color: #b864c4;
+  background-color: var(--secondary-color);
 }
 
 .done {
-  background-color: #732381;
+  background-color: var(--dark-color);
 }
 
 .ticket-card {
@@ -166,12 +175,18 @@ tbody tr:nth-child(odd) {
   border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border: 0.1em solid black;
+  flex: 1 1 auto;
+  max-width: 100%;
+}
+.filter-label, .sort-label {
+  color: var(--light-color);
+  padding: 1rem;
 }
 
 .container {
-  /* margin: auto; */
+   margin: auto; 
   width: 100%;
-  /* height: 90%; */
+   height: 90%; 
 }
 
 #create-ticket-link {
@@ -182,17 +197,20 @@ tbody tr:nth-child(odd) {
 
 .form {
   width: 60%;
-  height: 80%;
-  background-color: #b864c4;
+  height: auto;/*was 80% */
+  max-width: 500px;
+  background-color: var(--light-color);
   margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding: 2rem;
+  text-align: left;
 }
 
 .form > h1, .form > label {
-  color: yellow;
+  color: black;
 }
 
 .form > input {
@@ -232,7 +250,7 @@ tbody tr:nth-child(odd) {
 }
 
 .deleteBtn:hover {
-  color: #535bf2;
+  color: var(--hover-color);
 }
 
 .login-notice {
@@ -249,9 +267,19 @@ tbody tr:nth-child(odd) {
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: var(--hover-color);
   }
   button {
     background-color: #f9f9f9;
   }
 }
+
+
+/* @media  (max-width: 768px) {
+  .swim-lane {
+    width: 100%;
+  }
+  .ticket-card {
+    max-width: 100%;
+  }
+} */
