@@ -1,9 +1,9 @@
-# Krazy-Kanban-Board
+# 📝Krazy-Kanban-Board
 
 ## Description
-A full-stack Kanban Board application where users can create, update, and track tickets for various tasks in different projects statuses such as *Todo*, *In Progress*, and *done*. This app provides user authentication via JWT and allows users to manage their tasks efficiently.
+A full-stack Kanban Board application where users can create, update, and track tickets for various tasks in different projects statuses such as *Todo*, *In Progress*, and *done*. This app is provided with **JWT authentication**, built using **React**, **TypeScript**, **Express**, **PostgreSQL**, and **Sequelize**. Users can log in, manage tasks, and track their progress in different status columns.
 
-[Click here](link here render) to test the application!
+![Click here](link here render) to test the application!
 
 ![homepage](client/images/Kan-Ban-Pic.PNG)
 
@@ -11,8 +11,9 @@ A full-stack Kanban Board application where users can create, update, and track 
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Credits](#credits)
+- [Contributor](#contributor)
 - [License](#license)
+- [features](#features)
 
 ## Installation
 
@@ -34,41 +35,30 @@ JWT_SECRET_KEY='your_jwt_secret_key'
 
 ## Usage
 * On the main root directory run `npm run start:dev`.
-* To Login use one of the examples located on server/seeds/user-seeds.ts.
-* Once logged in you are presented (details about the website)
+* To Login use one of the examples located on "**server/seeds/user-seeds.ts**".
+* Once logged in you are presented with a ticket layout.
 
 It should be presented like the picture below:
 
-[picture here](image here)
+![ticket cards](client/images/ticket-cards.PNG)
 
-## Credits
-N/A 
 ## License
 
 This application is covered under [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Features
+✅ User Authentication (JWT) – Secure login and session management.
 
-User authentication (Login/Logout) using JWT
-CRUD functionality for tickets (Create, Read, Update, Delete)
-Ticket statuses: Todo, In Progress, and Done
-Responsive UI built with React
-RESTful API for backend operations using Express and Sequelize ORM
-Technologies Used
-Frontend: React, Vite, TypeScript, CSS
-Backend: Express, TypeScript, Sequelize, PostgreSQL
-Authentication: JWT (JSON Web Tokens)
-Database: PostgreSQL
-Getting Started
-Prerequisites
-Node.js (v14 or higher)
-PostgreSQL
-Yarn or npm (for managing packages)
+✅ Task Management – Create, edit, update, and delete tasks.
 
-## How to Contribute
+✅ Kanban Board View – Drag-and-drop tasks between "Todo", "In Progress", and "Done".
 
-If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
+✅ User Assignment – Assign tickets to specific users.
 
-## Tests
+✅ Data Persistence – Stores tasks and users in PostgreSQL.
 
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
+✅ API Security – Protected routes using JWT middleware.
+
+## Contributor
+
+🚀 Developed by [stephanuh](https://github.com/stephanuh)

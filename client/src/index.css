@@ -10,12 +10,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --primary-color: #493c2d; /*change color later */
-  --secondary-color: #cedea8;/*change color later */
-  --dark-color:#775c48;/*change color later */
-  --light-color:#eae2d9;/*change color later */
-  --accent-color: #00a6ed;/*change color later */
-  --hover-color: #ff9505;/*change color later */
+  --primary-color: #493c2d;
+  --secondary-color: #D9A066;
+  --dark-color:#917C78;
+  --light-color:#eae2d9;
+  --accent-color: #00a6ed;
+  --hover-color: #CC7351;
 }
 
 /* webkit solution */
