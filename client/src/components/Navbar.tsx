@@ -3,13 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import auth from '../utils/auth';
 
 const Navbar = () => {
-  const [ loginCheck, setLoginCheck ] = useState(false);
+  const [loginCheck, setLoginCheck] = useState(false);
   const navigate = useNavigate();
 
   const checkLogin = () => {
-    if(auth.loggedIn()) {
+    if (auth.loggedIn()) {
       setLoginCheck(true);
-    } else{
+    } else {
       setLoginCheck(false);
     }
   };
@@ -17,11 +17,11 @@ const Navbar = () => {
   useEffect(() => {
     console.log(loginCheck);
     checkLogin();
-  }, [loginCheck])
+  }, [loginCheck]);
 
   const titleClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (auth.loggedIn()){
+    if (auth.loggedIn()) {
       navigate('/');
     } else {
       navigate('/login');
@@ -36,25 +36,27 @@ const Navbar = () => {
   return (
     <div className='nav'>
       <div className='nav-title'>
-        <Link to='/' onClick={titleClick}>Krazy Kanban Board</Link>
+        <Link to='/' onClick={titleClick}>
+          Krazy Kanban Board
+        </Link>
       </div>
       <ul>
-      {
-        !loginCheck ? (
+        {!loginCheck ? (
           <li className='nav-item'>
             <Link to='/login'>
-            <button type='button'>Login</button>
-              </Link>
-              </li>
-            ) : (
-          <li className='nav-item'>
-            <button type='button' onClick={logoutClick}>Logout</button>
+              <button type='button'>Login</button>
+            </Link>
           </li>
-        )
-      }
+        ) : (
+          <li className='nav-item'>
+            <button type='button' onClick={logoutClick}>
+              Logout
+            </button>
+          </li>
+        )}
       </ul>
     </div>
-  )
-}
+  );
+};
 
 export default Navbar;
