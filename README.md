@@ -3,7 +3,7 @@
 ## Description
 A full-stack Kanban Board application where users can create, update, and track tickets for various tasks in different projects statuses such as *Todo*, *In Progress*, and *done*. This app is provided with **JWT authentication**, built using **React**, **TypeScript**, **Express**, **PostgreSQL**, and **Sequelize**. Users can log in, manage tasks, and track their progress in different status columns.
 
-![Click here](link here render) to test the application!
+       ![Click here](link here render) to test the application!
 
 ![homepage](client/images/Kanban-login.PNG)
 
