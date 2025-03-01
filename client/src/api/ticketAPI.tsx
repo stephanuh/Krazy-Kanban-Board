@@ -21,7 +21,7 @@ const retrieveTickets = async () => {
 
     return data;
   } catch (err) {
-    console.log('Error from data retrieval: ', err);
+    console.log('❌Error from data retrieval: ', err);
     return [];
   }
 };
