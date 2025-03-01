@@ -40,7 +40,7 @@ JWT_SECRET_KEY='your_jwt_secret_key'
 
 It should be presented like the picture below:
 
-![ticket cards](client/images/ticket-cards.PNG)
+![ticket cards](client/images/ticket-card-set.PNG)
 
 ## License
 
