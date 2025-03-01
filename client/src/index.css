@@ -10,10 +10,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --primary-color: #493c2d;
-  --secondary-color: #D9A066;
-  --dark-color:#917C78;
-  --light-color:#eae2d9;
+  --primary-color: #3f1717;
+  --secondary-color: #c4a67d;
+  --dark-color:#5f4c3d;
+  --light-color:#f5f5dc;
   --accent-color: #00a6ed;
   --hover-color: #CC7351;
 }
@@ -43,9 +43,9 @@ body {
   background-repeat: no-repeat no-repeat;
   background-position: center center;
   margin: 0;
-  place-items: center stretch; /*stretch was added */
+  place-items: center stretch;
   min-width: 320px;
-  min-height: 130vh; /*was 100 */
+  min-height: 130vh;
 }
 
 h1 {
@@ -146,7 +146,7 @@ tbody tr:nth-child(odd) {
 .swim-lane {
   text-align: center;
   font-weight: 500;
-  flex:1 1 33%; /*lanes*/
+  flex:1 1 33%;
   /* width: 33%; */
   height: 90vh; 
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -197,7 +197,7 @@ tbody tr:nth-child(odd) {
 
 .form {
   width: 60%;
-  height: auto;/*was 80% */
+  height: auto;
   max-width: 500px;
   background-color: var(--light-color);
   margin: auto;

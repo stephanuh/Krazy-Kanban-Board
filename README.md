@@ -5,7 +5,7 @@ A full-stack Kanban Board application where users can create, update, and track 
 
 ![Click here](link here render) to test the application!
 
-![homepage](client/images/Kan-Ban-Pic.PNG)
+![homepage](client/images/Kanban-login.PNG)
 
 ## Table of Contents
 
@@ -40,7 +40,7 @@ JWT_SECRET_KEY='your_jwt_secret_key'
 
 It should be presented like the picture below:
 
-![ticket cards](client/images/ticket-card-set.PNG)
+![ticket cards](client/images/ticket-cards.PNG)
 
 ## License
 
