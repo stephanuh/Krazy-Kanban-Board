@@ -5,9 +5,6 @@ A full-stack Kanban Board application where users can create, update, and track 
 
 [Click here](https://krazy-kanban-board-lw72.onrender.com) to test the application! 
 
-(unfortunatly I didn't get it rendered properly but It will be worked on later!😃)
-
-
 ![homepage](client/images/Kanban-login.PNG)
 
 ## Table of Contents
